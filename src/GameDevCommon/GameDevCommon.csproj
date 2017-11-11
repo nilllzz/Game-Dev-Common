@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{087378EE-7591-47CE-979F-6824FC0606EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameDevCommon</RootNamespace>
+    <AssemblyName>GameDevCommon</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComponentManager.cs" />
+    <Compile Include="Drawing\EllipseConfiguration.cs" />
+    <Compile Include="Drawing\GaussianBlur.cs" />
+    <Compile Include="Drawing\GradientConfiguration.cs" />
+    <Compile Include="Drawing\GraphicsDeviceHelper.cs" />
+    <Compile Include="Drawing\ShapeRenderer.cs" />
+    <Compile Include="Drawing\SpriteBatchExtensions.cs" />
+    <Compile Include="Drawing\SpriteBatchUsage.cs" />
+    <Compile Include="Drawing\TextureExtensions.cs" />
+    <Compile Include="GameInstanceProvider.cs" />
+    <Compile Include="IGame.cs" />
+    <Compile Include="Input\ControlsHandler.cs" />
+    <Compile Include="Input\GamePadHandler.cs" />
+    <Compile Include="Input\InputControlType.cs" />
+    <Compile Include="Input\InputDirection.cs" />
+    <Compile Include="Input\InputDirectionType.cs" />
+    <Compile Include="Input\KeyboardHandler.cs" />
+    <Compile Include="Input\MouseButton.cs" />
+    <Compile Include="Input\MouseHandler.cs" />
+    <Compile Include="Input\ThumbStick.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\Base3DObject.cs" />
+    <Compile Include="Rendering\BasicShader.cs" />
+    <Compile Include="Rendering\Camera.cs" />
+    <Compile Include="Rendering\Composers\CircleComposer.cs" />
+    <Compile Include="Rendering\Composers\CuboidComposer.cs" />
+    <Compile Include="Rendering\Composers\CylinderComposer.cs" />
+    <Compile Include="Rendering\Composers\DomeComposer.cs" />
+    <Compile Include="Rendering\Composers\PyramidComposer.cs" />
+    <Compile Include="Rendering\Composers\RectangleComposer.cs" />
+    <Compile Include="Rendering\Composers\TubeComposer.cs" />
+    <Compile Include="Rendering\Geometry.cs" />
+    <Compile Include="Rendering\GeometrySerializer.cs" />
+    <Compile Include="Rendering\I3DObject.cs" />
+    <Compile Include="Rendering\Morphed3DObject.cs" />
+    <Compile Include="Rendering\OptimizableRenderObjectCollection.cs" />
+    <Compile Include="Rendering\RenderObjectCollection.cs" />
+    <Compile Include="Rendering\Shader.cs" />
+    <Compile Include="Rendering\Texture\CuboidSide.cs" />
+    <Compile Include="Rendering\Texture\DefaultGeometryTextureDefinition.cs" />
+    <Compile Include="Rendering\Texture\GeometryTextureCuboidWrapper.cs" />
+    <Compile Include="Rendering\Texture\GeometryTextureMultiplier.cs" />
+    <Compile Include="Rendering\Texture\GeometryTextureTubeWrapper.cs" />
+    <Compile Include="Rendering\Texture\GeometryTextureRectangle.cs" />
+    <Compile Include="Rendering\Texture\IGeometryTextureDefintion.cs" />
+    <Compile Include="Rendering\VertexTransformer.cs" />
+    <Compile Include="RenderTargetManager.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Drawing\BlurHandler.cs" />
+    <None Include="packages.config" />
+    <Compile Include="Rendering\Composers\TriComposer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
