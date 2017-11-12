@@ -18,7 +18,10 @@ namespace GameDevCommon.Rendering
                 Matrix.CreateRotationZ(rotation.Z);
 
             for (int i = 0; i < vertices.Length; i++)
+            {
                 vertices[i].Position += Vector3.Transform(vertices[i].Position, transformation) - vertices[i].Position;
+                vertices[i].Normal += Vector3.Transform(vertices[i].Normal, transformation) - vertices[i].Normal;
+            }
         }
 
         public static void Scale(VertexPositionNormalTexture[] vertices, Vector3 scale)
@@ -26,7 +29,7 @@ namespace GameDevCommon.Rendering
             for (int i = 0; i < vertices.Length; i++)
                 vertices[i].Position *= scale;
         }
-        
+
         internal static void TransformToWorld<VertexType>(VertexType[] vertices, Matrix transform)
         {
             var positionField = typeof(VertexType).GetField("Position");
