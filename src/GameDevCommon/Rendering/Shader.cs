@@ -26,7 +26,7 @@ namespace GameDevCommon.Rendering
             Effect.CurrentTechnique = Effect.Techniques[defaultTechnique];
         }
 
-        public virtual void Prepare(Camera camera)
+        public virtual void Prepare(ICamera camera)
         {
             View = camera.View;
             Projection = camera.Projection;
@@ -34,8 +34,7 @@ namespace GameDevCommon.Rendering
 
         public virtual void Render(I3DObject obj)
         {
-            if (obj.IsVisible && obj.IsVisualObject)
-            {
+            if (obj.IsVisible && obj.IsVisualObject) {
                 if (obj.BlendState != null && obj.BlendState.Name != GameInstanceProvider.Instance.GraphicsDevice.BlendState.Name)
                     GameInstanceProvider.Instance.GraphicsDevice.BlendState = obj.BlendState;
                 else
@@ -73,10 +72,8 @@ namespace GameDevCommon.Rendering
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!IsDisposed)
-            {
-                if (disposing)
-                {
+            if (!IsDisposed) {
+                if (disposing) {
                     if (Effect != null && !Effect.IsDisposed) Effect.Dispose();
                 }
 

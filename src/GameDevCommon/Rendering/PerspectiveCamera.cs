@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace GameDevCommon.Rendering
 {
-    public abstract class Camera
+    public abstract class PerspectiveCamera : ICamera
     {
         private float _fov = 90f;
         protected float NearPlane { get; set; } = 0.01f;
@@ -12,8 +11,8 @@ namespace GameDevCommon.Rendering
 
         public event Action FOVChanged;
 
-        public Matrix View { get; protected set; }
-        public Matrix Projection { get; protected set; }
+        public Matrix View { get; set; }
+        public Matrix Projection { get; set; }
         public Vector3 Position { get; set; }
         public float Yaw { get; set; }
         public float Pitch { get; set; }
@@ -21,15 +20,14 @@ namespace GameDevCommon.Rendering
         public float FOV
         {
             get { return _fov; }
-            set
-            {
+            set {
                 _fov = value;
                 FOVChanged?.Invoke();
             }
         }
         public float AspectRatio { get; protected set; }
 
-        public Camera()
+        public PerspectiveCamera()
         {
             AspectRatio = GameInstanceProvider.Instance.GraphicsDevice.Viewport.AspectRatio;
         }

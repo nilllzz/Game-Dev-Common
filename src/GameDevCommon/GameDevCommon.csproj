@@ -61,7 +61,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\Base3DObject.cs" />
     <Compile Include="Rendering\BasicShader.cs" />
-    <Compile Include="Rendering\Camera.cs" />
+    <Compile Include="Rendering\ICamera.cs" />
+    <Compile Include="Rendering\PerspectiveCamera.cs" />
     <Compile Include="Rendering\Composers\CircleComposer.cs" />
     <Compile Include="Rendering\Composers\CuboidComposer.cs" />
     <Compile Include="Rendering\Composers\CylinderComposer.cs" />
