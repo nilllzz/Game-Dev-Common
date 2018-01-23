@@ -36,10 +36,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComponentManager.cs" />
     <Compile Include="Drawing\EllipseConfiguration.cs" />
+    <Compile Include="Drawing\Font\FontChar.cs" />
+    <Compile Include="Drawing\Font\FontCommon.cs" />
+    <Compile Include="Drawing\Font\FontFile.cs" />
+    <Compile Include="Drawing\Font\FontInfo.cs" />
+    <Compile Include="Drawing\Font\FontKerning.cs" />
+    <Compile Include="Drawing\Font\FontPage.cs" />
+    <Compile Include="Drawing\Font\FontRenderer.cs" />
     <Compile Include="Drawing\GaussianBlur.cs" />
     <Compile Include="Drawing\GradientConfiguration.cs" />
     <Compile Include="Drawing\GraphicsDeviceHelper.cs" />

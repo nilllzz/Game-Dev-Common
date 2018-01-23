@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameDevCommon.Drawing.Font;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -11,8 +12,7 @@ namespace GameDevCommon.Drawing
         /// </summary>
         public static void Begin(this SpriteBatch batch, SpriteBatchUsage usage)
         {
-            switch (usage)
-            {
+            switch (usage) {
                 case SpriteBatchUsage.Default:
                     batch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise);
                     break;
@@ -48,8 +48,7 @@ namespace GameDevCommon.Drawing
 
         public static void DrawMask(this SpriteBatch batch, Action drawMask, Action drawTexture)
         {
-            if (_maskEffect == null)
-            {
+            if (_maskEffect == null) {
                 var projection = Matrix.CreateOrthographicOffCenter(0,
                     GameInstanceProvider.Instance.GraphicsDevice.PresentationParameters.BackBufferWidth,
                     GameInstanceProvider.Instance.GraphicsDevice.PresentationParameters.BackBufferHeight,
@@ -84,6 +83,33 @@ namespace GameDevCommon.Drawing
             batch.Begin(SpriteSortMode.Immediate, null, null, _textureStencil, null, _maskEffect);
             drawTexture();
             batch.End();
+        }
+
+        public static void DrawText(this SpriteBatch batch, FontRenderer fontRenderer, string text, Rectangle borders, Color color)
+        {
+            fontRenderer.DrawText(batch, text, borders, color);
+        }
+
+        public static void DrawText(this SpriteBatch batch, FontRenderer fontRenderer, string text, Vector2 position, Color color)
+        {
+            var size = fontRenderer.MeasureText(text);
+            var borders = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+            DrawText(batch, fontRenderer, text, borders, color);
+        }
+
+        public static void DrawTextCentered(this SpriteBatch batch, FontRenderer fontRenderer, string text, Rectangle borders, Color color)
+        {
+            fontRenderer.DrawTextCentered(batch, text, borders, color);
+        }
+
+        public static void DrawTextCenteredStretched(this SpriteBatch batch, FontRenderer fontRenderer, string text, Rectangle borders, Color color)
+        {
+            fontRenderer.DrawTextCenteredStretched(batch, text, borders, color);
+        }
+
+        public static void DrawTextStretched(this SpriteBatch batch, FontRenderer fontRenderer, string text, Rectangle borders, Color color)
+        {
+            fontRenderer.DrawTextStretched(batch, text, borders, color);
         }
     }
 }
