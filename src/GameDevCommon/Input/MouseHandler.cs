@@ -26,8 +26,7 @@ namespace GameDevCommon.Input
         /// </summary>
         public bool ButtonPressed(MouseButton button)
         {
-            switch (button)
-            {
+            switch (button) {
                 case MouseButton.Left:
                     return (_oldState.LeftButton == ButtonState.Released && _currentState.LeftButton == ButtonState.Pressed);
                 case MouseButton.Right:
@@ -39,12 +38,27 @@ namespace GameDevCommon.Input
         }
 
         /// <summary>
+        /// Returns if a specific mouse button has been released.
+        /// </summary>
+        public bool ButtonReleased(MouseButton button)
+        {
+            switch (button) {
+                case MouseButton.Left:
+                    return (_oldState.LeftButton == ButtonState.Pressed && _currentState.LeftButton == ButtonState.Released);
+                case MouseButton.Right:
+                    return (_oldState.RightButton == ButtonState.Pressed && _currentState.RightButton == ButtonState.Released);
+                case MouseButton.Middle:
+                    return (_oldState.MiddleButton == ButtonState.Pressed && _currentState.MiddleButton == ButtonState.Released);
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Returns if a specific mouse button is being held down.
         /// </summary>
         public bool ButtonDown(MouseButton button)
         {
-            switch (button)
-            {
+            switch (button) {
                 case MouseButton.Left:
                     return (_currentState.LeftButton == ButtonState.Pressed);
                 case MouseButton.Right:
