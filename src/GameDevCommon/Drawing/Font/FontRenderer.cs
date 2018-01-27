@@ -84,23 +84,8 @@ namespace GameDevCommon.Drawing.Font
             return (float)(Math.Round(value * FontScale, MidpointRounding.ToEven) / FontScale);
         }
 
-        private static void DrawRectangle(SpriteBatch spriteBatch, Rectangle rectangle, Color color, int lineWidth)
-        {
-            if (_pointTexture == null) {
-                _pointTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
-                _pointTexture.SetData(new Color[] { Color.White });
-            }
-
-            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X, rectangle.Y, lineWidth, rectangle.Height + lineWidth), color);
-            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X, rectangle.Y, rectangle.Width + lineWidth, lineWidth), color);
-            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X + rectangle.Width, rectangle.Y, lineWidth, rectangle.Height + lineWidth), color);
-            spriteBatch.Draw(_pointTexture, new Rectangle(rectangle.X, rectangle.Y + rectangle.Height, rectangle.Width + lineWidth, lineWidth), color);
-        }
-
         public void DrawText(SpriteBatch spriteBatch, string text, Rectangle borders, Color color)
         {
-            //DrawRectangle(spriteBatch, borders, Color.Red, 1);
-
             var size = MeasureText(text);
             var min = Math.Min(borders.Width / size.X, borders.Height / size.Y);
             var scale = ScaleToMin(min);
@@ -139,12 +124,9 @@ namespace GameDevCommon.Drawing.Font
 
         public void DrawTextCentered(SpriteBatch spriteBatch, string text, Rectangle borders, Color color)
         {
-            //DrawRectangle(spriteBatch, borders, Color.Red, 1);
-
             var size = MeasureText(text);
             var min = Math.Min(borders.Width / size.X, borders.Height / size.Y);
             var scale = ScaleToMin(min);
-            //scale = min;
 
             var dx = borders.Center.X - (int)(size.X * scale * 0.5f) - text.Length;
             var dy = borders.Y;

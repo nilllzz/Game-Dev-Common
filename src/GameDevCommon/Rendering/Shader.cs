@@ -35,10 +35,15 @@ namespace GameDevCommon.Rendering
         public virtual void Render(I3DObject obj)
         {
             if (obj.IsVisible && obj.IsVisualObject) {
-                if (obj.BlendState != null && obj.BlendState.Name != GameInstanceProvider.Instance.GraphicsDevice.BlendState.Name)
-                    GameInstanceProvider.Instance.GraphicsDevice.BlendState = obj.BlendState;
-                else
-                    GameInstanceProvider.Instance.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+                if (obj.BlendState != null) {
+                    if (obj.BlendState.Name != GameInstanceProvider.Instance.GraphicsDevice.BlendState.Name) {
+                        GameInstanceProvider.Instance.GraphicsDevice.BlendState = obj.BlendState;
+                    }
+                } else {
+                    if (GameInstanceProvider.Instance.GraphicsDevice.BlendState.Name != BlendState.AlphaBlend.Name) {
+                        GameInstanceProvider.Instance.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+                    }
+                }
 
                 World = obj.World;
                 RenderVertices(obj);
