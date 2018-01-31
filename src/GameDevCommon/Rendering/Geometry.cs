@@ -15,16 +15,12 @@ namespace GameDevCommon.Rendering
 
         public void AddVertices(VertexType[] vertices)
         {
-            foreach (var vertex in vertices)
-            {
+            foreach (var vertex in vertices) {
                 var index = _vertices.IndexOf(vertex);
-                if (index == -1)
-                {
+                if (index == -1) {
                     _indices.Add(_vertices.Count);
                     _vertices.Add(vertex);
-                }
-                else
-                {
+                } else {
                     _indices.Add(index);
                 }
             }
@@ -32,10 +28,8 @@ namespace GameDevCommon.Rendering
 
         public void AddIndexedVertices(IEnumerable<VertexType> vertices)
         {
-            foreach (var vertex in vertices)
-            {
-                if (!_vertices.Contains(vertex))
-                    _vertices.Add(vertex);
+            foreach (var vertex in vertices) {
+                _vertices.Add(vertex);
             }
         }
 
@@ -43,7 +37,7 @@ namespace GameDevCommon.Rendering
         {
             _indices.AddRange(indices);
         }
-        
+
         public void CopyTo(Geometry<VertexType> target)
         {
             // using ToList() to create shallow copies
@@ -64,8 +58,7 @@ namespace GameDevCommon.Rendering
 
         private void Dispose(bool disposing)
         {
-            if (!IsDisposed)
-            {
+            if (!IsDisposed) {
                 _vertices = null;
                 _indices = null;
 

@@ -4,40 +4,38 @@ using System.Collections.Generic;
 
 namespace GameDevCommon.Rendering
 {
-    public class RenderObjectCollection : IEnumerable<I3DObject>
+    public class RenderObjectCollection<T> : IEnumerable<T> where T : I3DObject
     {
         protected object _lock = new object();
-        protected readonly List<I3DObject> _opaqueObjects, _transparentObjects;
+        protected readonly List<T> _opaqueObjects, _transparentObjects;
 
-        public IEnumerable<I3DObject> OpaqueObjects => _opaqueObjects;
-        public IEnumerable<I3DObject> TransparentObjects => _transparentObjects;
+        public IEnumerable<T> OpaqueObjects => _opaqueObjects;
+        public IEnumerable<T> TransparentObjects => _transparentObjects;
 
         public RenderObjectCollection()
         {
-            _opaqueObjects = new List<I3DObject>();
-            _transparentObjects = new List<I3DObject>();
+            _opaqueObjects = new List<T>();
+            _transparentObjects = new List<T>();
         }
 
-        public RenderObjectCollection(I3DObject[] objects)
+        public RenderObjectCollection(T[] objects)
         {
-            _opaqueObjects = new List<I3DObject>();
-            _transparentObjects = new List<I3DObject>();
+            _opaqueObjects = new List<T>();
+            _transparentObjects = new List<T>();
             AddRange(objects);
         }
 
-        public void AddRange(params I3DObject[] objs)
+        public void AddRange(params T[] objs)
         {
-            if (objs != null)
-            {
+            if (objs != null) {
                 foreach (var obj in objs)
                     Add(obj);
             }
         }
 
-        public virtual void Add(I3DObject obj)
+        public virtual void Add(T obj)
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 if (obj.IsOpaque)
                     _opaqueObjects.Add(obj);
                 else
@@ -45,19 +43,17 @@ namespace GameDevCommon.Rendering
             }
         }
 
-        public void ForEach(Action<I3DObject> method)
+        public void ForEach(Action<T> method)
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 _opaqueObjects.ForEach(method);
                 _transparentObjects.ForEach(method);
             }
         }
 
-        private I3DObject GetItem(int index)
+        private T GetItem(int index)
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 if (index < _opaqueObjects.Count)
                     return _opaqueObjects[index];
                 else
@@ -65,10 +61,9 @@ namespace GameDevCommon.Rendering
             }
         }
 
-        private void SetItem(int index, I3DObject obj)
+        private void SetItem(int index, T obj)
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 if (index < _opaqueObjects.Count)
                     _opaqueObjects[index] = obj;
                 else
@@ -76,10 +71,9 @@ namespace GameDevCommon.Rendering
             }
         }
 
-        public void Remove(I3DObject obj)
+        public void Remove(T obj)
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 if (obj.IsOpaque)
                     _opaqueObjects.Remove(obj);
                 else
@@ -89,8 +83,7 @@ namespace GameDevCommon.Rendering
 
         public void RemoveAt(int index)
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 if (index < _opaqueObjects.Count)
                     _opaqueObjects.RemoveAt(index);
                 else
@@ -108,17 +101,15 @@ namespace GameDevCommon.Rendering
 
         public void Sort()
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 _transparentObjects.Sort();
             }
         }
 
-        public IEnumerator<I3DObject> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             var index = 0;
-            while (index < _opaqueObjects.Count + _transparentObjects.Count)
-            {
+            while (index < _opaqueObjects.Count + _transparentObjects.Count) {
                 yield return GetItem(index);
                 index++;
             }
@@ -126,14 +117,12 @@ namespace GameDevCommon.Rendering
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        public I3DObject this[int index]
+        public T this[int index]
         {
-            get
-            {
+            get {
                 return GetItem(index);
             }
-            set
-            {
+            set {
                 SetItem(index, value);
             }
         }

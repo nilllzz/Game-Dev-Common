@@ -15,7 +15,7 @@ namespace GameDevCommon.Rendering.Composers
 
         public static VertexPositionNormalTexture[] Create(float width, float height, float depth)
             => Create(width, height, depth, DefaultGeometryTextureDefinition.Instance);
-        
+
         public static VertexPositionNormalTexture[] Create(float width, float height, float depth,
             IGeometryTextureDefintion textureDefinition)
         {
@@ -60,21 +60,21 @@ namespace GameDevCommon.Rendering.Composers
             }, textureDefinition);
             textureDefinition.NextElement();
 
-            var top = RectangleComposer.Create(new[]
+            var bottom = RectangleComposer.Create(new[]
             {
-                new Vector3(-halfWidth, halfHeight, halfDepth),
-                new Vector3(halfWidth, halfHeight, halfDepth),
-                new Vector3(-halfWidth, halfHeight, -halfDepth),
-                new Vector3(halfWidth, halfHeight, -halfDepth),
+                new Vector3(-halfWidth, -halfHeight, halfDepth),
+                new Vector3(halfWidth, -halfHeight, halfDepth),
+                new Vector3(-halfWidth, -halfHeight, -halfDepth),
+                new Vector3(halfWidth, -halfHeight, -halfDepth),
             }, textureDefinition);
             textureDefinition.NextElement();
 
-            var bottom = RectangleComposer.Create(new[]
+            var top = RectangleComposer.Create(new[]
             {
-                new Vector3(-halfWidth, -halfHeight, -halfDepth),
-                new Vector3(halfWidth, -halfHeight, -halfDepth),
-                new Vector3(-halfWidth, -halfHeight, halfDepth),
-                new Vector3(halfWidth, -halfHeight, halfDepth),
+                new Vector3(-halfWidth, halfHeight, -halfDepth),
+                new Vector3(halfWidth, halfHeight, -halfDepth),
+                new Vector3(-halfWidth, halfHeight, halfDepth),
+                new Vector3(halfWidth, halfHeight, halfDepth),
             }, textureDefinition);
 
             vertices.AddRange(front);
@@ -97,7 +97,7 @@ namespace GameDevCommon.Rendering.Composers
             var blf = edges[5];
             var brf = edges[6];
             var brb = edges[7];
-            
+
             var vertices = new List<VertexPositionNormalTexture>();
 
             var front = RectangleComposer.Create(new[]

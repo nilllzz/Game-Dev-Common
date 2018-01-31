@@ -12,8 +12,6 @@ namespace GameDevCommon.Drawing.Font
     {
         private const string FontXmlDataFileExtension = "fnt";
 
-        private static Texture2D _pointTexture;
-
         private FontFile FontFile { get; }
         private Texture2D[] Textures { get; }
 

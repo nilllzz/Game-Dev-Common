@@ -4,14 +4,13 @@ using System.Linq;
 
 namespace GameDevCommon.Rendering
 {
-    public sealed class OptimizableRenderObjectCollection : RenderObjectCollection
+    public sealed class OptimizableRenderObjectCollection : RenderObjectCollection<I3DObject>
     {
         private List<I3DObject> _originalObjects;
 
         public IEnumerable<I3DObject> OriginalObjects
         {
-            get
-            {
+            get {
                 if (Optimized)
                     return _originalObjects;
                 else
@@ -31,10 +30,8 @@ namespace GameDevCommon.Rendering
 
         public override void Add(I3DObject obj)
         {
-            if (Optimized)
-            {
-                lock (_lock)
-                {
+            if (Optimized) {
+                lock (_lock) {
                     _originalObjects.Add(obj);
                 }
             }
@@ -83,8 +80,7 @@ namespace GameDevCommon.Rendering
 
         public void Optmimize<VertexType>() where VertexType : struct
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 _originalObjects = _opaqueObjects.Concat(_transparentObjects).ToList();
 
                 _opaqueObjects.Clear();
@@ -92,21 +88,15 @@ namespace GameDevCommon.Rendering
 
                 // categorize objects:
                 var categories = new Dictionary<ObjectCategory, List<I3DObject>>();
-                foreach (var obj in _originalObjects)
-                {
-                    if (!obj.IsOpaque || !obj.IsOptimizable)
-                    {
+                foreach (var obj in _originalObjects) {
+                    if (!obj.IsOpaque || !obj.IsOptimizable) {
                         Add(obj);
-                    }
-                    else
-                    {
+                    } else {
                         var category = ObjectCategory.Create(obj);
                         if (category.BlendStateId == -1) // unknown/custom blendstate
                         {
                             Add(obj);
-                        }
-                        else
-                        {
+                        } else {
                             if (categories.ContainsKey(category))
                                 categories[category].Add(obj);
                             else
@@ -116,15 +106,11 @@ namespace GameDevCommon.Rendering
                 }
 
                 // morph categories of objects into a single geometry object:
-                foreach (var category in categories.Keys)
-                {
+                foreach (var category in categories.Keys) {
                     var objects = categories[category];
-                    if (objects.Count == 1)
-                    {
+                    if (objects.Count == 1) {
                         AddRange(objects.ToArray());
-                    }
-                    else
-                    {
+                    } else {
                         var morphed = new Morphed3DObject<VertexType>(objects);
                         morphed.LoadContent();
                         Add(morphed);
@@ -137,8 +123,7 @@ namespace GameDevCommon.Rendering
 
         public void Restore()
         {
-            lock (_lock)
-            {
+            lock (_lock) {
                 _opaqueObjects.Clear();
                 _transparentObjects.Clear();
                 AddRange(_originalObjects.ToArray());
