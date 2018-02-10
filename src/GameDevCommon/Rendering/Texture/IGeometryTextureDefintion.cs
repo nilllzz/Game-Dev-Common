@@ -2,7 +2,7 @@
 
 namespace GameDevCommon.Rendering.Texture
 {
-    public interface IGeometryTextureDefintion
+    public interface ITextureDefintion
     {
         void NextElement();
         Vector2 Transform(Vector2 normalVector);

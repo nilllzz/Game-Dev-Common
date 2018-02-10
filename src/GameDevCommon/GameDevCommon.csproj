@@ -86,11 +86,11 @@
     <Compile Include="Rendering\RenderObjectCollection.cs" />
     <Compile Include="Rendering\Shader.cs" />
     <Compile Include="Rendering\Texture\CuboidSide.cs" />
-    <Compile Include="Rendering\Texture\DefaultGeometryTextureDefinition.cs" />
-    <Compile Include="Rendering\Texture\GeometryTextureCuboidWrapper.cs" />
-    <Compile Include="Rendering\Texture\GeometryTextureMultiplier.cs" />
-    <Compile Include="Rendering\Texture\GeometryTextureTubeWrapper.cs" />
-    <Compile Include="Rendering\Texture\GeometryTextureRectangle.cs" />
+    <Compile Include="Rendering\Texture\DefaultTextureDefinition.cs" />
+    <Compile Include="Rendering\Texture\TextureCuboidWrapper.cs" />
+    <Compile Include="Rendering\Texture\TextureMultiplier.cs" />
+    <Compile Include="Rendering\Texture\TextureTubeWrapper.cs" />
+    <Compile Include="Rendering\Texture\TextureRectangle.cs" />
     <Compile Include="Rendering\Texture\IGeometryTextureDefintion.cs" />
     <Compile Include="Rendering\VertexTransformer.cs" />
     <Compile Include="RenderTargetManager.cs" />

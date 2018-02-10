@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameDevCommon.Rendering.Texture
 {
-    public class GeometryTextureRectangle : IGeometryTextureDefintion
+    public class TextureRectangle : ITextureDefintion
     {
         private readonly Vector2 _textureStart, _textureEnd;
 
-        public GeometryTextureRectangle(Rectangle textureRectangle, Rectangle textureBounds)
+        public TextureRectangle(Rectangle textureRectangle, Rectangle textureBounds)
         {
             _textureStart = new Vector2((float)textureRectangle.Left / textureBounds.Width,
                 (float)textureRectangle.Top / textureBounds.Height);
@@ -15,11 +15,11 @@ namespace GameDevCommon.Rendering.Texture
                 (float)textureRectangle.Height / textureBounds.Height);
         }
 
-        public GeometryTextureRectangle(Rectangle textureRectangle, Texture2D texture)
+        public TextureRectangle(Rectangle textureRectangle, Texture2D texture)
              : this(textureRectangle, texture.Bounds)
         { }
 
-        public GeometryTextureRectangle(float x, float y, float width, float height)
+        public TextureRectangle(float x, float y, float width, float height)
         {
             _textureStart = new Vector2(x, y);
             _textureEnd = new Vector2(width, height);

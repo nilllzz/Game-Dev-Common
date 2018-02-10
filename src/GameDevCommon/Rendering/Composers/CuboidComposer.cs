@@ -8,16 +8,16 @@ namespace GameDevCommon.Rendering.Composers
     public static class CuboidComposer
     {
         public static VertexPositionNormalTexture[] Create(float length)
-            => Create(length, length, length, DefaultGeometryTextureDefinition.Instance);
+            => Create(length, length, length, DefaultTextureDefinition.Instance);
 
-        public static VertexPositionNormalTexture[] Create(float length, IGeometryTextureDefintion textureDefinition)
+        public static VertexPositionNormalTexture[] Create(float length, ITextureDefintion textureDefinition)
             => Create(length, length, length, textureDefinition);
 
         public static VertexPositionNormalTexture[] Create(float width, float height, float depth)
-            => Create(width, height, depth, DefaultGeometryTextureDefinition.Instance);
+            => Create(width, height, depth, DefaultTextureDefinition.Instance);
 
         public static VertexPositionNormalTexture[] Create(float width, float height, float depth,
-            IGeometryTextureDefintion textureDefinition)
+            ITextureDefintion textureDefinition)
         {
             var vertices = new List<VertexPositionNormalTexture>();
 
@@ -87,7 +87,7 @@ namespace GameDevCommon.Rendering.Composers
             return vertices.ToArray();
         }
 
-        public static VertexPositionNormalTexture[] Create(Vector3[] edges, IGeometryTextureDefintion textureDefinition)
+        public static VertexPositionNormalTexture[] Create(Vector3[] edges, ITextureDefintion textureDefinition)
         {
             var tlb = edges[0];
             var tlf = edges[1];

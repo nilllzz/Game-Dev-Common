@@ -8,22 +8,22 @@ namespace GameDevCommon.Rendering.Composers
 {
     public static class DomeComposer
     {
-        private static IGeometryTextureDefintion[] Repeat(IGeometryTextureDefintion textureDefinition, int amount)
+        private static ITextureDefintion[] Repeat(ITextureDefintion textureDefinition, int amount)
         {
-            var arr = new IGeometryTextureDefintion[amount];
+            var arr = new ITextureDefintion[amount];
             for (int i = 0; i < amount; i++)
                 arr[i] = textureDefinition;
             return arr;
         }
 
         public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount, int levels)
-            => Create(radius, height, edgeCount, levels, Repeat(DefaultGeometryTextureDefinition.Instance, levels));
+            => Create(radius, height, edgeCount, levels, Repeat(DefaultTextureDefinition.Instance, levels));
 
-        public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount, int levels, IGeometryTextureDefintion textureDefinition)
+        public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount, int levels, ITextureDefintion textureDefinition)
             => Create(radius, height, edgeCount, levels, Repeat(textureDefinition, levels));
 
         public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount, int levels,
-            params IGeometryTextureDefintion[] textureDefinitions)
+            params ITextureDefintion[] textureDefinitions)
         {
             var levelHeight = height / levels;
             var halfHeight = levelHeight / 2f;

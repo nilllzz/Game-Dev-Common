@@ -4,29 +4,29 @@ using Microsoft.Xna.Framework;
 
 namespace GameDevCommon.Rendering.Texture
 {
-    public class GeometryTextureCuboidWrapper : IGeometryTextureDefintion
+    public class TextureCuboidWrapper : ITextureDefintion
     {
-        private Dictionary<CuboidSide, IGeometryTextureDefintion> _definitions;
+        private Dictionary<CuboidSide, ITextureDefintion> _definitions;
         private int _currentSideIndex = 1;
 
-        public GeometryTextureCuboidWrapper()
+        public TextureCuboidWrapper()
         {
-            _definitions = new Dictionary<CuboidSide, IGeometryTextureDefintion>();
+            _definitions = new Dictionary<CuboidSide, ITextureDefintion>();
         }
 
-        public GeometryTextureCuboidWrapper(Dictionary<CuboidSide, Rectangle> definitions, Rectangle textureBounds)
+        public TextureCuboidWrapper(Dictionary<CuboidSide, Rectangle> definitions, Rectangle textureBounds)
         {
             _definitions = definitions.ToDictionary(
-                p => p.Key, 
-                p => new GeometryTextureRectangle(p.Value, textureBounds) as IGeometryTextureDefintion);
+                p => p.Key,
+                p => new TextureRectangle(p.Value, textureBounds) as ITextureDefintion);
         }
 
-        public void AddSide(CuboidSide side, IGeometryTextureDefintion textureDefinition)
+        public void AddSide(CuboidSide side, ITextureDefintion textureDefinition)
         {
             _definitions.Add(side, textureDefinition);
         }
 
-        public void AddSide(CuboidSide[] sides, IGeometryTextureDefintion textureDefinition)
+        public void AddSide(CuboidSide[] sides, ITextureDefintion textureDefinition)
         {
             foreach (var side in sides)
                 _definitions.Add(side, textureDefinition);

@@ -7,10 +7,10 @@ namespace GameDevCommon.Rendering.Composers
 {
     public static class TriComposer
     {
-        public static VertexPositionNormalTexture[] Create(Vector3 p1, Vector3 p2, Vector3 p3, IGeometryTextureDefintion textureDefinition)
+        public static VertexPositionNormalTexture[] Create(Vector3 p1, Vector3 p2, Vector3 p3, ITextureDefintion textureDefinition)
             => Create(new[] { p1, p2, p3 }, textureDefinition);
 
-        public static VertexPositionNormalTexture[] Create(Vector3[] positions, IGeometryTextureDefintion textureDefinition)
+        public static VertexPositionNormalTexture[] Create(Vector3[] positions, ITextureDefintion textureDefinition)
         {
             var normal = GetNormal(positions[0], positions[1], positions[2]);
 

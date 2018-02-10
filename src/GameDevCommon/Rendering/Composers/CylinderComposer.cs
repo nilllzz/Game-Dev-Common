@@ -8,14 +8,14 @@ namespace GameDevCommon.Rendering.Composers
     public static class CylinderComposer
     {
         public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount)
-            => Create(radius, height, edgeCount, DefaultGeometryTextureDefinition.Instance, DefaultGeometryTextureDefinition.Instance);
+            => Create(radius, height, edgeCount, DefaultTextureDefinition.Instance, DefaultTextureDefinition.Instance);
 
         public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount,
-            IGeometryTextureDefintion sideTexture, IGeometryTextureDefintion endTexture)
+            ITextureDefintion sideTexture, ITextureDefintion endTexture)
             => Create(radius, height, edgeCount, sideTexture, endTexture, endTexture);
 
         public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount,
-            IGeometryTextureDefintion sideTexture, IGeometryTextureDefintion endTexture1, IGeometryTextureDefintion endTexture2)
+            ITextureDefintion sideTexture, ITextureDefintion endTexture1, ITextureDefintion endTexture2)
         {
             var vertices = new List<VertexPositionNormalTexture>();
 

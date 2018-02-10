@@ -2,16 +2,16 @@
 
 namespace GameDevCommon.Rendering.Texture
 {
-    public class GeometryTextureMultiplier : IGeometryTextureDefintion
+    public class TextureMultiplier : ITextureDefintion
     {
         private readonly Vector2 _multiplier;
 
-        public GeometryTextureMultiplier(float multiplier)
+        public TextureMultiplier(float multiplier)
         {
             _multiplier = new Vector2(multiplier);
         }
 
-        public GeometryTextureMultiplier(Vector2 multiplier)
+        public TextureMultiplier(Vector2 multiplier)
         {
             _multiplier = multiplier;
         }

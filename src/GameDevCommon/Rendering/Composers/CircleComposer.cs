@@ -26,9 +26,9 @@ namespace GameDevCommon.Rendering.Composers
         }
 
         public static VertexPositionNormalTexture[] Create(float radius, int edgeCount)
-            => Create(radius, edgeCount, DefaultGeometryTextureDefinition.Instance);
+            => Create(radius, edgeCount, DefaultTextureDefinition.Instance);
         
-        public static VertexPositionNormalTexture[] Create(float radius, int edgeCount, IGeometryTextureDefintion textureDefinition)
+        public static VertexPositionNormalTexture[] Create(float radius, int edgeCount, ITextureDefintion textureDefinition)
         {
             var edgePoints = GetEdgePoints(radius, edgeCount);
             var vertices = new List<VertexPositionNormalTexture>();

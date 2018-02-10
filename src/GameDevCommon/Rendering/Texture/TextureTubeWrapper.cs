@@ -2,13 +2,13 @@
 
 namespace GameDevCommon.Rendering.Texture
 {
-    public class GeometryTextureTubeWrapper : IGeometryTextureDefintion
+    public class TextureTubeWrapper : ITextureDefintion
     {
         private int _element;
         private readonly int _totalElements;
         private readonly Vector2 _textureStart, _textureEnd;
 
-        public GeometryTextureTubeWrapper(Rectangle textureRectangle, Rectangle textureBounds, int elements)
+        public TextureTubeWrapper(Rectangle textureRectangle, Rectangle textureBounds, int elements)
         {
             _totalElements = elements;
 

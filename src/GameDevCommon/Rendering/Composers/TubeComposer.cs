@@ -8,9 +8,9 @@ namespace GameDevCommon.Rendering.Composers
     public static class TubeComposer
     {
         public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount)
-            => Create(radius, height, edgeCount, DefaultGeometryTextureDefinition.Instance);
+            => Create(radius, height, edgeCount, DefaultTextureDefinition.Instance);
 
-        public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount, IGeometryTextureDefintion textureDefinition)
+        public static VertexPositionNormalTexture[] Create(float radius, float height, int edgeCount, ITextureDefintion textureDefinition)
         {
             var edgePoints = CircleComposer.GetEdgePoints(radius, edgeCount);
             var vertices = new List<VertexPositionNormalTexture>();
