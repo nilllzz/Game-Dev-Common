@@ -55,15 +55,15 @@ namespace GameDevCommon.Rendering.Composers
 
                 new VertexPositionNormalTexture
                 {
-                    Position = positions[1],
-                    Normal = normal2,
-                    TextureCoordinate = textureDefinition.Transform(new Vector2(1, 0))
-                },
-                new VertexPositionNormalTexture
-                {
                     Position = positions[2],
                     Normal = normal2,
                     TextureCoordinate = textureDefinition.Transform(new Vector2(0, 1))
+                },
+                new VertexPositionNormalTexture
+                {
+                    Position = positions[1],
+                    Normal = normal2,
+                    TextureCoordinate = textureDefinition.Transform(new Vector2(1, 0))
                 },
                 new VertexPositionNormalTexture
                 {
@@ -73,6 +73,6 @@ namespace GameDevCommon.Rendering.Composers
                 },
             };
         }
-        
+
     }
 }
