@@ -23,7 +23,7 @@ namespace GameDevCommon.Rendering.Composers
             var end1 = CircleComposer.Create(radius, edgeCount, endTexture1);
             var end2 = CircleComposer.Create(radius, edgeCount, endTexture2);
 
-            VertexTransformer.Rotate(end1, new Vector3(0, 0, MathHelper.PiOver2));
+            VertexTransformer.Rotate(end1, new Vector3(0, 0, -MathHelper.PiOver2));
             VertexTransformer.Offset(end1, new Vector3(height / 2f, 0, 0));
             VertexTransformer.Rotate(end2, new Vector3(0, 0, MathHelper.PiOver2));
             VertexTransformer.Offset(end2, new Vector3(-height / 2f, 0, 0));
