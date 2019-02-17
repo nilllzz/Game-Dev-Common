@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 
 namespace GameDevCommon.Rendering
 {
@@ -38,6 +39,21 @@ namespace GameDevCommon.Rendering
                 var tr = __makeref(vertices[i]);
                 positionField.SetValueDirect(tr, Vector3.Transform((Vector3)positionField.GetValueDirect(tr), transform));
             }
+        }
+
+        /// <summary>
+        /// Generates vertices with opposite normals
+        /// </summary>
+        public static VertexPositionNormalTexture[] GenerateOpposites(VertexPositionNormalTexture[] vertices)
+        {
+            var output = new VertexPositionNormalTexture[vertices.Length];
+            for (var i = 0; i < output.Length; i++)
+            {
+                var vertex = vertices[i];
+                vertex.Normal = -vertex.Normal;
+                output[i] = vertex;
+            }
+            return output.Reverse().ToArray();
         }
     }
 }
