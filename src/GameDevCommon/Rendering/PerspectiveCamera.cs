@@ -20,7 +20,8 @@ namespace GameDevCommon.Rendering
         public float FOV
         {
             get { return _fov; }
-            set {
+            set
+            {
                 _fov = value;
                 FOVChanged?.Invoke();
             }
@@ -68,6 +69,13 @@ namespace GameDevCommon.Rendering
         {
             Projection =
                 Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(_fov), AspectRatio, NearPlane, FarPlane);
+        }
+
+        public Vector3 GetDirection()
+        {
+            var dir = Vector3.Forward;
+            var rot = Matrix.CreateFromYawPitchRoll(Yaw, Pitch, Roll);
+            return Vector3.Transform(dir, rot);
         }
 
         public abstract void Update();

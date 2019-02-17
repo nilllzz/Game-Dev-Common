@@ -21,12 +21,12 @@ namespace GameDevCommon
 
         public static RenderTarget2D CreateScreenTarget()
         {
-            return new RenderTarget2D(GameInstanceProvider.Instance.GraphicsDevice, _width, _height, false, default(SurfaceFormat), DepthFormat.Depth24Stencil8, 0, RenderTargetUsage.PreserveContents);
+            return new RenderTarget2D(GameInstanceProvider.Instance.GraphicsDevice, _width, _height, false, default(SurfaceFormat), DepthFormat.Depth24Stencil8, 16, RenderTargetUsage.PreserveContents);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height)
         {
-            return new RenderTarget2D(GameInstanceProvider.Instance.GraphicsDevice, width, height, false, default(SurfaceFormat), DepthFormat.Depth24Stencil8, 0, RenderTargetUsage.PreserveContents);
+            return new RenderTarget2D(GameInstanceProvider.Instance.GraphicsDevice, width, height, false, default(SurfaceFormat), DepthFormat.Depth24Stencil8, 16, RenderTargetUsage.PreserveContents);
         }
 
         /// <summary>
